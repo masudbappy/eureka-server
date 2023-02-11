@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: eureka-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: eureka-server.com
+    http:
+      paths:
+      - path: /
+        pathType: Exact
+        backend:
+          serviceName: eureka-server-svc
+          servicePort: 8761
